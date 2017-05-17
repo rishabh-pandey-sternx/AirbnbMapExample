@@ -1,19 +1,14 @@
 import React from 'react';
-import {
-  Text,
-  View,
-  Dimensions,
-  StyleSheet,
-} from 'react-native';
+import {Text, View, Dimensions, StyleSheet} from 'react-native';
 
 import MapView from 'react-native-maps';
 import flagImg from './assets/flag-blue.png';
 
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
-const LATITUDE = 37.78825;
-const LONGITUDE = -122.4324;
+const LATITUDE = 12.91074;
+const LONGITUDE = 77.601825;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const SPACE = 0.01;
@@ -49,8 +44,8 @@ class LoadingMap extends React.Component {
               latitude: LATITUDE + SPACE,
               longitude: LONGITUDE + SPACE,
             }}
-            centerOffset={{ x: -18, y: -60 }}
-            anchor={{ x: 0.69, y: 1 }}
+            centerOffset={{x: -18, y: -60}}
+            anchor={{x: 0.69, y: 1}}
             image={flagImg}
           />
           <MapView.Marker
@@ -58,8 +53,8 @@ class LoadingMap extends React.Component {
               latitude: LATITUDE - SPACE,
               longitude: LONGITUDE - SPACE,
             }}
-            centerOffset={{ x: -42, y: -60 }}
-            anchor={{ x: 0.84, y: 1 }}
+            centerOffset={{x: -42, y: -60}}
+            anchor={{x: 0.84, y: 1}}
           >
             <MapView.Callout>
               <View>

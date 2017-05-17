@@ -9,11 +9,11 @@ import {
 import MapView from 'react-native-maps';
 import CustomCallout from './CustomCallout';
 
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
-const LATITUDE = 37.78825;
-const LONGITUDE = -122.4324;
+const LATITUDE = 12.91074;
+const LONGITUDE = 77.601825;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const SPACE = 0.01;
@@ -61,7 +61,7 @@ class Callouts extends React.Component {
   }
 
   render() {
-    const { region, markers } = this.state;
+    const {region, markers} = this.state;
     return (
       <View style={styles.container}>
         <MapView
@@ -70,14 +70,14 @@ class Callouts extends React.Component {
           initialRegion={region}
         >
           <MapView.Marker
-            ref={ref => { this.marker1 = ref; }}
+            ref={ref => {
+              this.marker1 = ref;
+            }}
             coordinate={markers[0].coordinate}
             title="This is a native view"
             description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation" // eslint-disable-line max-len
           />
-          <MapView.Marker
-            coordinate={markers[1].coordinate}
-          >
+          <MapView.Marker coordinate={markers[1].coordinate}>
             <MapView.Callout style={styles.plainView}>
 
               <View>
@@ -87,8 +87,8 @@ class Callouts extends React.Component {
           </MapView.Marker>
           <MapView.Marker
             coordinate={markers[2].coordinate}
-            calloutOffset={{ x: -8, y: 28 }}
-            calloutAnchor={{ x: 0.5, y: 0.4 }}
+            calloutOffset={{x: -8, y: 28}}
+            calloutAnchor={{x: 0.5, y: 0.4}}
           >
             <MapView.Callout tooltip style={styles.customView}>
               <CustomCallout>
@@ -103,10 +103,16 @@ class Callouts extends React.Component {
           </View>
         </View>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={() => this.show()} style={[styles.bubble, styles.button]}>
+          <TouchableOpacity
+            onPress={() => this.show()}
+            style={[styles.bubble, styles.button]}
+          >
             <Text>Show</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.hide()} style={[styles.bubble, styles.button]}>
+          <TouchableOpacity
+            onPress={() => this.hide()}
+            style={[styles.bubble, styles.button]}
+          >
             <Text>Hide</Text>
           </TouchableOpacity>
         </View>

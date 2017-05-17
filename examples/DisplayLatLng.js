@@ -7,13 +7,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import MapView, { MAP_TYPES } from 'react-native-maps';
+import MapView, {MAP_TYPES} from 'react-native-maps';
 
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
-const LATITUDE = 37.78825;
-const LONGITUDE = -122.4324;
+const LATITUDE = 12.91074;
+const LONGITUDE = 77.601825;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
@@ -32,11 +32,11 @@ class DisplayLatLng extends React.Component {
   }
 
   onRegionChange(region) {
-    this.setState({ region });
+    this.setState({region});
   }
 
   jumpRandom() {
-    this.setState({ region: this.randomRegion() });
+    this.setState({region: this.randomRegion()});
   }
 
   animateRandom() {
@@ -44,11 +44,13 @@ class DisplayLatLng extends React.Component {
   }
 
   randomRegion() {
-    const { region } = this.state;
+    const {region} = this.state;
     return {
       ...this.state.region,
-      latitude: region.latitude + ((Math.random() - 0.5) * (region.latitudeDelta / 2)),
-      longitude: region.longitude + ((Math.random() - 0.5) * (region.longitudeDelta / 2)),
+      latitude: region.latitude +
+        (Math.random() - 0.5) * (region.latitudeDelta / 2),
+      longitude: region.longitude +
+        (Math.random() - 0.5) * (region.longitudeDelta / 2),
     };
   }
 
@@ -57,14 +59,16 @@ class DisplayLatLng extends React.Component {
       <View style={styles.container}>
         <MapView
           provider={this.props.provider}
-          ref={ref => { this.map = ref; }}
+          ref={ref => {
+            this.map = ref;
+          }}
           mapType={MAP_TYPES.TERRAIN}
           style={styles.map}
           initialRegion={this.state.region}
           onRegionChange={region => this.onRegionChange(region)}
         />
         <View style={[styles.bubble, styles.latlng]}>
-          <Text style={{ textAlign: 'center' }}>
+          <Text style={{textAlign: 'center'}}>
             {this.state.region.latitude.toPrecision(7)},
             {this.state.region.longitude.toPrecision(7)}
           </Text>

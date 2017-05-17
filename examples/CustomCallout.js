@@ -1,8 +1,5 @@
-import React, { PropTypes } from 'react';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
+import React, {PropTypes} from 'react';
+import {StyleSheet, View} from 'react-native';
 
 const propTypes = {
   children: PropTypes.node.isRequired,

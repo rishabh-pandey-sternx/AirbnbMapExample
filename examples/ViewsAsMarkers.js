@@ -9,11 +9,11 @@ import {
 import MapView from 'react-native-maps';
 import PriceMarker from './PriceMarker';
 
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
-const LATITUDE = 37.78825;
-const LONGITUDE = -122.4324;
+const LATITUDE = 12.91074;
+const LONGITUDE = 77.601825;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
@@ -37,11 +37,11 @@ class ViewsAsMarkers extends React.Component {
   }
 
   increment() {
-    this.setState({ amount: this.state.amount + 1 });
+    this.setState({amount: this.state.amount + 1});
   }
 
   decrement() {
-    this.setState({ amount: this.state.amount - 1 });
+    this.setState({amount: this.state.amount - 1});
   }
 
   render() {
@@ -61,13 +61,13 @@ class ViewsAsMarkers extends React.Component {
             onPress={() => this.decrement()}
             style={[styles.bubble, styles.button]}
           >
-            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>-</Text>
+            <Text style={{fontSize: 20, fontWeight: 'bold'}}>-</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => this.increment()}
             style={[styles.bubble, styles.button]}
           >
-            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>+</Text>
+            <Text style={{fontSize: 20, fontWeight: 'bold'}}>+</Text>
           </TouchableOpacity>
         </View>
       </View>

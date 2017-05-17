@@ -15,15 +15,15 @@ const screen = Dimensions.get('window');
 class LegalLabel extends React.Component {
   static propTypes = {
     provider: MapView.ProviderPropType,
-  }
+  };
 
   state = {
     _legalLabelPositionY: new Animated.Value(10),
     legalLabelPositionY: 10,
-  }
+  };
 
   componentDidMount() {
-    this.state._legalLabelPositionY.addListener(({ value }) => {
+    this.state._legalLabelPositionY.addListener(({value}) => {
       this.setState({
         legalLabelPositionY: value,
       });
@@ -43,7 +43,7 @@ class LegalLabel extends React.Component {
         toValue: 10,
       }),
     ]).start();
-  }
+  };
 
   render() {
     const latlng = {
@@ -56,11 +56,11 @@ class LegalLabel extends React.Component {
     const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
     return (
-      <View style={{ ...StyleSheet.absoluteFillObject }}>
+      <View style={{...StyleSheet.absoluteFillObject}}>
         <MapView
           provider={this.props.provider}
           style={styles.map}
-          legalLabelInsets={{ bottom: this.state.legalLabelPositionY, right: 10 }}
+          legalLabelInsets={{bottom: this.state.legalLabelPositionY, right: 10}}
           initialRegion={{
             ...latlng,
             latitudeDelta: LATITUDE_DELTA,
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   photo: {
     padding: 2,
     position: 'absolute',
-    top: mapHeight - (photoSize / 2),
+    top: mapHeight - photoSize / 2,
     left: padding,
     borderRadius: 5,
     borderWidth: StyleSheet.hairlineWidth,

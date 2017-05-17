@@ -13,8 +13,8 @@ import MapView from 'react-native-maps';
 const screen = Dimensions.get('window');
 
 const ASPECT_RATIO = screen.width / screen.height;
-const LATITUDE = 37.78825;
-const LONGITUDE = -122.4324;
+const LATITUDE = 12.91074;
+const LONGITUDE = 77.601825;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
@@ -31,11 +31,13 @@ class AnimatedMarkers extends React.Component {
   }
 
   animate() {
-    const { coordinate } = this.state;
-    coordinate.timing({
-      latitude: LATITUDE + ((Math.random() - 0.5) * (LATITUDE_DELTA / 2)),
-      longitude: LONGITUDE + ((Math.random() - 0.5) * (LONGITUDE_DELTA / 2)),
-    }).start();
+    const {coordinate} = this.state;
+    coordinate
+      .timing({
+        latitude: LATITUDE + (Math.random() - 0.5) * (LATITUDE_DELTA / 2),
+        longitude: LONGITUDE + (Math.random() - 0.5) * (LONGITUDE_DELTA / 2),
+      })
+      .start();
   }
 
   render() {
@@ -51,9 +53,7 @@ class AnimatedMarkers extends React.Component {
             longitudeDelta: LONGITUDE_DELTA,
           }}
         >
-          <MapView.Marker.Animated
-            coordinate={this.state.coordinate}
-          />
+          <MapView.Marker.Animated coordinate={this.state.coordinate} />
         </MapView>
         <View style={styles.buttonContainer}>
           <TouchableOpacity

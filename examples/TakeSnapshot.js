@@ -12,11 +12,11 @@ import MapView from 'react-native-maps';
 import flagBlueImg from './assets/flag-blue.png';
 import flagPinkImg from './assets/flag-pink.png';
 
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
-const LATITUDE = 37.78825;
-const LONGITUDE = -122.4324;
+const LATITUDE = 12.91074;
+const LONGITUDE = 77.601825;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const SPACE = 0.01;
@@ -30,15 +30,20 @@ class MarkerTypes extends React.Component {
   }
 
   takeSnapshot() {
-    this.map.takeSnapshot(300, 300, {
-      latitude: LATITUDE - SPACE,
-      longitude: LONGITUDE - SPACE,
-      latitudeDelta: 0.01,
-      longitudeDelta: 0.01 * ASPECT_RATIO,
-    }, (err, data) => {
-      if (err) console.log(err);
-      this.setState({ mapSnapshot: data });
-    });
+    this.map.takeSnapshot(
+      300,
+      300,
+      {
+        latitude: LATITUDE - SPACE,
+        longitude: LONGITUDE - SPACE,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01 * ASPECT_RATIO,
+      },
+      (err, data) => {
+        if (err) console.log(err);
+        this.setState({mapSnapshot: data});
+      }
+    );
   }
 
   render() {
@@ -46,7 +51,9 @@ class MarkerTypes extends React.Component {
       <View style={styles.container}>
         <MapView
           provider={this.props.provider}
-          ref={ref => { this.map = ref; }}
+          ref={ref => {
+            this.map = ref;
+          }}
           style={styles.map}
           initialRegion={{
             latitude: LATITUDE,
@@ -60,8 +67,8 @@ class MarkerTypes extends React.Component {
               latitude: LATITUDE + SPACE,
               longitude: LONGITUDE + SPACE,
             }}
-            centerOffset={{ x: -18, y: -60 }}
-            anchor={{ x: 0.69, y: 1 }}
+            centerOffset={{x: -18, y: -60}}
+            anchor={{x: 0.69, y: 1}}
             image={flagBlueImg}
           />
           <MapView.Marker
@@ -69,8 +76,8 @@ class MarkerTypes extends React.Component {
               latitude: LATITUDE - SPACE,
               longitude: LONGITUDE - SPACE,
             }}
-            centerOffset={{ x: -42, y: -60 }}
-            anchor={{ x: 0.84, y: 1 }}
+            centerOffset={{x: -42, y: -60}}
+            anchor={{x: 0.84, y: 1}}
             image={flagPinkImg}
           />
         </MapView>
@@ -86,14 +93,13 @@ class MarkerTypes extends React.Component {
         {this.state.mapSnapshot &&
           <TouchableOpacity
             style={[styles.container, styles.overlay]}
-            onPress={() => this.setState({ mapSnapshot: null })}
+            onPress={() => this.setState({mapSnapshot: null})}
           >
             <Image
-              source={{ uri: this.state.mapSnapshot.uri }}
-              style={{ width: 300, height: 300 }}
+              source={{uri: this.state.mapSnapshot.uri}}
+              style={{width: 300, height: 300}}
             />
-          </TouchableOpacity>
-        }
+          </TouchableOpacity>}
       </View>
     );
   }

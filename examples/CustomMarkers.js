@@ -10,11 +10,11 @@ import {
 import MapView from 'react-native-maps';
 import flagPinkImg from './assets/flag-pink.png';
 
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
-const LATITUDE = 37.78825;
-const LONGITUDE = -122.4324;
+const LATITUDE = 12.91074;
+const LONGITUDE = 77.601825;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 let id = 0;
@@ -68,7 +68,7 @@ class CustomMarkers extends React.Component {
         </MapView>
         <View style={styles.buttonContainer}>
           <TouchableOpacity
-            onPress={() => this.setState({ markers: [] })}
+            onPress={() => this.setState({markers: []})}
             style={styles.bubble}
           >
             <Text>Tap to create a marker of random color</Text>

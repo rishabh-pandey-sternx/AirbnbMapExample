@@ -9,11 +9,11 @@ import {
 
 import MapView from 'react-native-maps';
 
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
-const LATITUDE = 37.78825;
-const LONGITUDE = -122.4324;
+const LATITUDE = 12.91074;
+const LONGITUDE = 77.601825;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 let id = 0;
@@ -35,7 +35,7 @@ class PolylineCreator extends React.Component {
   }
 
   finish() {
-    const { polylines, editing } = this.state;
+    const {polylines, editing} = this.state;
     this.setState({
       polylines: [...polylines, editing],
       editing: null,
@@ -43,7 +43,7 @@ class PolylineCreator extends React.Component {
   }
 
   onPanDrag(e) {
-    const { editing } = this.state;
+    const {editing} = this.state;
     if (!editing) {
       this.setState({
         editing: {
@@ -55,10 +55,7 @@ class PolylineCreator extends React.Component {
       this.setState({
         editing: {
           ...editing,
-          coordinates: [
-            ...editing.coordinates,
-            e.nativeEvent.coordinate,
-          ],
+          coordinates: [...editing.coordinates, e.nativeEvent.coordinate],
         },
       });
     }
@@ -90,18 +87,16 @@ class PolylineCreator extends React.Component {
               strokeColor="#F00"
               fillColor="rgba(255,0,0,0.5)"
               strokeWidth={1}
-            />
-          }
+            />}
         </MapView>
         <View style={styles.buttonContainer}>
-          {this.state.editing && (
+          {this.state.editing &&
             <TouchableOpacity
               onPress={() => this.finish()}
               style={[styles.bubble, styles.button]}
             >
               <Text>Finish</Text>
-            </TouchableOpacity>
-          )}
+            </TouchableOpacity>}
         </View>
       </View>
     );
